@@ -18,36 +18,6 @@ window.ENTY_MANIFEST = {
   "pages": {},
   "logs": [
     {
-      "file": "toots/18.html",
-      "month": 0,
-      "day": 0,
-      "part": null,
-      "label": "18",
-      "stamp": "",
-      "account": "@shop",
-      "character": "",
-      "speaker": "상점계",
-      "avatar": "https://ko.acrylicboxdisplay.com/uploads/202019355/grey-acrylic-sheet15290067310.jpg",
-      "text": "✟익명의 편지가 도착했습니다.[당신이 밉다고 했던 것은 취소하지 않겠습니다. 안 밉다고 했던 것도요. 그래도 모든 일이 끝나면, 함께 바다에 갑시다. 그러니 조금만 기다려주세요. 기다리게 해서 미안합니다. ]",
-      "count": 1,
-      "gens": {}
-    },
-    {
-      "file": "toots/8.html",
-      "month": 0,
-      "day": 0,
-      "part": null,
-      "label": "8",
-      "stamp": "",
-      "account": "@shop",
-      "character": "",
-      "speaker": "상점계",
-      "avatar": "https://ko.acrylicboxdisplay.com/uploads/202019355/grey-acrylic-sheet15290067310.jpg",
-      "text": "✟익명의 편지가 도착했습니다.[화재가 났다고 하던데, 그쪽은 알고 계셨나?]",
-      "count": 1,
-      "gens": {}
-    },
-    {
       "file": "toots/1.html",
       "month": 9,
       "day": 24,
@@ -150,6 +120,21 @@ window.ENTY_MANIFEST = {
       "avatar": "https://media.discordapp.net/attachments/746056017997201552/1558736099571007548/2.png?ex=6acc859e&is=6acb341e&hm=f7bbf678431ce599513aae2614088910140337df03bc3d25e1bfcbbebaf97e77&=&format=webp&quality=lossless",
       "text": "여러분, 도서관에서 책을 보신 뒤에 제대로 꽂아두시길 바랍니다.",
       "count": 9,
+      "gens": {}
+    },
+    {
+      "file": "toots/8.html",
+      "month": 9,
+      "day": 30,
+      "part": null,
+      "label": "9월 30일",
+      "stamp": "2026년 9월 30일 오후 11:07",
+      "account": "@oro",
+      "character": "Flutto",
+      "speaker": "오로 스칼라토",
+      "avatar": "https://media.discordapp.net/attachments/746056017997201552/1558734497313198091/d59f3ede542ad4cf.png?ex=6acc8420&is=6acb32a0&hm=95edfe30b2c044b09528514ff936b9f956d5047fc59c519b619ae0f147d97bb3&=&format=webp&quality=lossless",
+      "text": "✟익명의 편지가 도착했습니다.[화재가 났다고 하던데, 그쪽은 알고 계셨나?]",
+      "count": 1,
       "gens": {}
     },
     {
@@ -285,6 +270,21 @@ window.ENTY_MANIFEST = {
       "avatar": "https://media.discordapp.net/attachments/746056017997201552/1558734497313198091/d59f3ede542ad4cf.png?ex=6acc8420&is=6acb32a0&hm=95edfe30b2c044b09528514ff936b9f956d5047fc59c519b619ae0f147d97bb3&=&format=webp&quality=lossless",
       "text": "(창고 안에서 다 들리도록 발 콕콕 해본다...) 아... 아무나 편지 안 써주나... 엽서에 돈까지 넣어주면 좋겠는데... 거기다 몰래 담배랑 와인도 넣어주면 참 좋겠는데...",
       "count": 15,
+      "gens": {}
+    },
+    {
+      "file": "toots/18.html",
+      "month": 10,
+      "day": 6,
+      "part": null,
+      "label": "10월 6일",
+      "stamp": "2026년 10월 6일 오후 5:54",
+      "account": "@Elio",
+      "character": "Ettore",
+      "speaker": "엘리오 리날디",
+      "avatar": "https://media.discordapp.net/attachments/746056017997201552/1558736099571007548/2.png?ex=6acc859e&is=6acb341e&hm=f7bbf678431ce599513aae2614088910140337df03bc3d25e1bfcbbebaf97e77&=&format=webp&quality=lossless",
+      "text": "✟익명의 편지가 도착했습니다.[당신이 밉다고 했던 것은 취소하지 않겠습니다. 안 밉다고 했던 것도요. 그래도 모든 일이 끝나면, 함께 바다에 갑시다. 그러니 조금만 기다려주세요. 기다리게 해서 미안합니다. ]",
+      "count": 1,
       "gens": {}
     },
     {
