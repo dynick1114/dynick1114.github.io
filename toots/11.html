@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>11</title>
+  <script id="enty-theme-boot">
+    (function () {
+      var root = document.documentElement;
+      function readable(hex) {
+        var f = function (i) {
+          var v = parseInt(hex.substr(i, 2), 16) / 255;
+          return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4);
+        };
+        var L = 0.2126 * f(1) + 0.7152 * f(3) + 0.0722 * f(5);
+        return 1.05 / (L + 0.05) >= (L + 0.05) / 0.0567 ? "#ffffff" : "#0d141d";
+      }
+      try {
+        var hash = (location.hash.match(/theme=([^&]+)/) || [])[1];
+        var raw = hash
+          ? atob(decodeURIComponent(hash))
+          : localStorage.getItem("enty-theme") || "{}";
+        var state = JSON.parse(raw) || {};
+        var mode = state.mode || "auto";
+        if (mode === "auto") {
+          mode = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        }
+        root.setAttribute("data-theme", mode);
+        var custom = (state.custom || {})[mode] || {};
+        for (var key in custom) {
+          if (!/^#[0-9a-f]{6}$/i.test(custom[key])) continue;
+          root.style.setProperty("--accent-" + key, custom[key]);
+          if (key === "Ettore" || key === "Flutto") {
+            root.style.setProperty("--on-" + key, readable(custom[key]));
+          }
+        }
+      } catch (e) {
+      }
+      try {
+        var saved = JSON.parse(localStorage.getItem("enty-avatars") || "{}");
+        var rules = "";
+        var accounts = {"Ettore":"@Elio","Flutto":"@oro"};
+        for (var name in accounts) {
+          var gen = root.getAttribute("data-gen-" + name);
+          var url = gen && saved[name + ":" + gen];
+          if (!url || url.slice(0, 11) !== "data:image/") continue;
+          var at = '.ttobot-status[data-account="' + accounts[name] + '"] .ttobot-avatar';
+          rules += at + '{background-image:url("' + url + '");background-size:cover;background-position:center}';
+          rules += at + " img{visibility:hidden}";
+        }
+        if (rules) {
+          var style = document.createElement("style");
+          style.id = "enty-avatar-style";
+          style.textContent = rules;
+          document.head.appendChild(style);
+        }
+      } catch (e) {
+      }
+      try {
+        if (window.self !== window.top) root.classList.add("in-pane");
+      } catch (e) {
+        root.classList.add("in-pane");
+      }
+    })();
+  </script>
+  <link rel="stylesheet" href="../style/ttobot.css">
+</head>
+<body>
+<div class="ttobot-status" data-account="@Elio">
+  <div class="ttobot-avatar-wrapper">
+    <div class="ttobot-avatar"><img src="https://media.discordapp.net/attachments/746056017997201552/1558736099571007548/2.png?ex=6acc859e&is=6acb341e&hm=f7bbf678431ce599513aae2614088910140337df03bc3d25e1bfcbbebaf97e77&=&format=webp&quality=lossless" alt="profile" /></div>
+    <div class="ttobot-name">엘리오 리날디</div>
+  </div>
+  <div class="ttobot-content">
+    <div class="ttobot-content-text">오늘의 운세가 안 좋았습니다.</div>
+    
+  </div>
+  <div class="ttobot-time">2026년 10월 01일 오후 06:16</div>
+  </div>
+
+<div class="ttobot-status" data-account="@oro">
+  <div class="ttobot-avatar-wrapper">
+    <div class="ttobot-avatar"><img src="https://media.discordapp.net/attachments/746056017997201552/1558734497313198091/d59f3ede542ad4cf.png?ex=6acc8420&is=6acb32a0&hm=95edfe30b2c044b09528514ff936b9f956d5047fc59c519b619ae0f147d97bb3&=&format=webp&quality=lossless" alt="profile" /></div>
+    <div class="ttobot-name">오로 스칼라토</div>
+  </div>
+  <div class="ttobot-content">
+    <div class="ttobot-content-text">(뭔가 훔쳐듣고 왔다.) 운세가 어떻게 나왔길래.</div>
+    
+  </div>
+  <div class="ttobot-time">2026년 10월 01일 오후 06:31</div>
+  </div>
+
+<div class="ttobot-status" data-account="@Elio">
+  <div class="ttobot-avatar-wrapper">
+    <div class="ttobot-avatar"><img src="https://media.discordapp.net/attachments/746056017997201552/1558736099571007548/2.png?ex=6acc859e&is=6acb341e&hm=f7bbf678431ce599513aae2614088910140337df03bc3d25e1bfcbbebaf97e77&=&format=webp&quality=lossless" alt="profile" /></div>
+    <div class="ttobot-name">엘리오 리날디</div>
+  </div>
+  <div class="ttobot-content">
+    <div class="ttobot-content-text">별자리 운세가 11위로 나왔습니다. 12위로 착각했는데, 다시 계산해 보니 11위더군요.</div>
+    
+  </div>
+  <div class="ttobot-time">2026년 10월 01일 오후 06:36</div>
+  </div>
+
+<div class="ttobot-status" data-account="@oro">
+  <div class="ttobot-avatar-wrapper">
+    <div class="ttobot-avatar"><img src="https://media.discordapp.net/attachments/746056017997201552/1558734497313198091/d59f3ede542ad4cf.png?ex=6acc8420&is=6acb32a0&hm=95edfe30b2c044b09528514ff936b9f956d5047fc59c519b619ae0f147d97bb3&=&format=webp&quality=lossless" alt="profile" /></div>
+    <div class="ttobot-name">오로 스칼라토</div>
+  </div>
+  <div class="ttobot-content">
+    <div class="ttobot-content-text">저도 운세 봐주십쇼, 운세. 무료는 다 받아야겠습니다.</div>
+    
+  </div>
+  <div class="ttobot-time">2026년 10월 01일 오후 06:37</div>
+  </div>
+
+<div class="ttobot-status" data-account="@Elio">
+  <div class="ttobot-avatar-wrapper">
+    <div class="ttobot-avatar"><img src="https://media.discordapp.net/attachments/746056017997201552/1558736099571007548/2.png?ex=6acc859e&is=6acb341e&hm=f7bbf678431ce599513aae2614088910140337df03bc3d25e1bfcbbebaf97e77&=&format=webp&quality=lossless" alt="profile" /></div>
+    <div class="ttobot-name">엘리오 리날디</div>
+  </div>
+  <div class="ttobot-content">
+    <div class="ttobot-content-text">그렇게 무료 밝히시다가 대머리 되십니다. (이런다…….) 그래서, 생일이 어떻게 되십니까?</div>
+    
+  </div>
+  <div class="ttobot-time">2026년 10월 01일 오후 06:38</div>
+  </div>
+
+<div class="ttobot-status" data-account="@oro">
+  <div class="ttobot-avatar-wrapper">
+    <div class="ttobot-avatar"><img src="https://media.discordapp.net/attachments/746056017997201552/1558734497313198091/d59f3ede542ad4cf.png?ex=6acc8420&is=6acb32a0&hm=95edfe30b2c044b09528514ff936b9f956d5047fc59c519b619ae0f147d97bb3&=&format=webp&quality=lossless" alt="profile" /></div>
+    <div class="ttobot-name">오로 스칼라토</div>
+  </div>
+  <div class="ttobot-content">
+    <div class="ttobot-content-text">아... (말할까 말까 한참 고민하다가 그냥 대머리 될 생각 중.) 12월 24일인데요.</div>
+    
+  </div>
+  <div class="ttobot-time">2026년 10월 01일 오후 06:41</div>
+  </div>
+
+<div class="ttobot-status" data-account="@Elio">
+  <div class="ttobot-avatar-wrapper">
+    <div class="ttobot-avatar"><img src="https://media.discordapp.net/attachments/746056017997201552/1558736099571007548/2.png?ex=6acc859e&is=6acb341e&hm=f7bbf678431ce599513aae2614088910140337df03bc3d25e1bfcbbebaf97e77&=&format=webp&quality=lossless" alt="profile" /></div>
+    <div class="ttobot-name">엘리오 리날디</div>
+  </div>
+  <div class="ttobot-content">
+    <div class="ttobot-content-text">성탄 전야가 생일이라니 제법 신성하군요. 그리고 축하합니다, 염소자리는 2위입니다. 갖고 싶었던 물건을 손에 넣을지도 모르니 주위에 어필하라는군요. 행운의 물건은 깨경단…… 이라는 동방의 음식입니다. 당신도 피오루치 씨께 가보시죠.</div>
+    
+  </div>
+  <div class="ttobot-time">2026년 10월 01일 오후 06:46</div>
+  </div>
+
+<div class="ttobot-status" data-account="@oro">
+  <div class="ttobot-avatar-wrapper">
+    <div class="ttobot-avatar"><img src="https://media.discordapp.net/attachments/746056017997201552/1558734497313198091/d59f3ede542ad4cf.png?ex=6acc8420&is=6acb32a0&hm=95edfe30b2c044b09528514ff936b9f956d5047fc59c519b619ae0f147d97bb3&=&format=webp&quality=lossless" alt="profile" /></div>
+    <div class="ttobot-name">오로 스칼라토</div>
+  </div>
+  <div class="ttobot-content">
+    <div class="ttobot-content-text">주변에 어필... (슬쩍 손 내민다.) 제가 가지고 싶은게 있는데 말입니다. 아, 누가 안 주나? 돈 받고 싶은데... 진짜 필요한데...</div>
+    
+  </div>
+  <div class="ttobot-time">2026년 10월 01일 오후 06:54</div>
+  </div>
+
+<div class="ttobot-status" data-account="@Elio">
+  <div class="ttobot-avatar-wrapper">
+    <div class="ttobot-avatar"><img src="https://media.discordapp.net/attachments/746056017997201552/1558736099571007548/2.png?ex=6acc859e&is=6acb341e&hm=f7bbf678431ce599513aae2614088910140337df03bc3d25e1bfcbbebaf97e77&=&format=webp&quality=lossless" alt="profile" /></div>
+    <div class="ttobot-name">엘리오 리날디</div>
+  </div>
+  <div class="ttobot-content">
+    <div class="ttobot-content-text">당신 정말 기회를 놓치지 않으시는군요……. (기가 차다는 듯한 표정 하더니, 손 위에 10달란트 올려준다.) 시계 가게는 그만두시고 마냐나 씨와 동업해보시는 건 어떻습니까……. [ 오로 스칼라토 / 양도 / 10 달란트 ]</div>
+    
+  </div>
+  <div class="ttobot-time">2026년 10월 01일 오후 06:58</div>
+  </div>
+
+<div class="ttobot-status" data-account="@oro">
+  <div class="ttobot-avatar-wrapper">
+    <div class="ttobot-avatar"><img src="https://media.discordapp.net/attachments/746056017997201552/1558734497313198091/d59f3ede542ad4cf.png?ex=6acc8420&is=6acb32a0&hm=95edfe30b2c044b09528514ff936b9f956d5047fc59c519b619ae0f147d97bb3&=&format=webp&quality=lossless" alt="profile" /></div>
+    <div class="ttobot-name">오로 스칼라토</div>
+  </div>
+  <div class="ttobot-content">
+    <div class="ttobot-content-text">돈이다... (돈 보고 설레서는 바로 주머니에 쑤셔넣었다.) 안 그래도 마냐나 씨 옆에서 구걸하려고 했습니다. 비법도 물어보는 중이니 조만간 소문이 들리면 저인 줄 아십쇼. (돈 받았다고 뒤도 안 돌아본 채 터벅터벅 지나감...)</div>
+    
+  </div>
+  <div class="ttobot-time">2026년 10월 01일 오후 07:01</div>
+  </div>
+  <script src="../search.js"></script>
+  <script src="../manifest.js"></script>
+  <script src="../theme.js"></script>
+</body>
+</html>
