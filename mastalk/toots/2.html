@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2</title>
+  <script id="enty-theme-boot">
+    (function () {
+      var root = document.documentElement;
+      function readable(hex) {
+        var f = function (i) {
+          var v = parseInt(hex.substr(i, 2), 16) / 255;
+          return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4);
+        };
+        var L = 0.2126 * f(1) + 0.7152 * f(3) + 0.0722 * f(5);
+        return 1.05 / (L + 0.05) >= (L + 0.05) / 0.0567 ? "#ffffff" : "#0d141d";
+      }
+      try {
+        var hash = (location.hash.match(/theme=([^&]+)/) || [])[1];
+        var raw = hash
+          ? atob(decodeURIComponent(hash))
+          : localStorage.getItem("enty-theme") || "{}";
+        var state = JSON.parse(raw) || {};
+        var mode = state.mode || "auto";
+        if (mode === "auto") {
+          mode = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        }
+        root.setAttribute("data-theme", mode);
+        var custom = (state.custom || {})[mode] || {};
+        for (var key in custom) {
+          if (!/^#[0-9a-f]{6}$/i.test(custom[key])) continue;
+          root.style.setProperty("--accent-" + key, custom[key]);
+          if (key === "Ettore" || key === "Flutto") {
+            root.style.setProperty("--on-" + key, readable(custom[key]));
+          }
+        }
+      } catch (e) {
+      }
+      try {
+        var saved = JSON.parse(localStorage.getItem("enty-avatars") || "{}");
+        var rules = "";
+        var accounts = {"Ettore":"@Elio","Flutto":"@oro"};
+        for (var name in accounts) {
+          var gen = root.getAttribute("data-gen-" + name);
+          var url = gen && saved[name + ":" + gen];
+          if (!url || url.slice(0, 11) !== "data:image/") continue;
+          var at = '.ttobot-status[data-account="' + accounts[name] + '"] .ttobot-avatar';
+          rules += at + '{background-image:url("' + url + '");background-size:cover;background-position:center}';
+          rules += at + " img{visibility:hidden}";
+        }
+        if (rules) {
+          var style = document.createElement("style");
+          style.id = "enty-avatar-style";
+          style.textContent = rules;
+          document.head.appendChild(style);
+        }
+      } catch (e) {
+      }
+      try {
+        if (window.self !== window.top) root.classList.add("in-pane");
+      } catch (e) {
+        root.classList.add("in-pane");
+      }
+    })();
+  </script>
+  <link rel="stylesheet" href="../style/ttobot.css">
+</head>
+<body>
+<div class="ttobot-status" data-account="@Elio">
+  <div class="ttobot-avatar-wrapper">
+    <div class="ttobot-avatar"><img src="https://media.discordapp.net/attachments/746056017997201552/1558736099571007548/2.png?ex=6acc859e&is=6acb341e&hm=f7bbf678431ce599513aae2614088910140337df03bc3d25e1bfcbbebaf97e77&=&format=webp&quality=lossless" alt="profile" /></div>
+    <div class="ttobot-name">엘리오 리날디</div>
+  </div>
+  <div class="ttobot-content">
+    <div class="ttobot-content-text">(친분이 있던 신자에게 붙잡혀 세례식의 사전 준비를 돕고 있다.) 이것 참, 점술가인 제가 손을 보태도 될지 모르겠네요. (그리 말하는 손에는 종이 뭉치가 들려있다.)</div>
+    
+  </div>
+  <div class="ttobot-time">2026년 9월 24일 오전 12:23</div>
+  </div>
+
+<div class="ttobot-status" data-account="@oro">
+  <div class="ttobot-avatar-wrapper">
+    <div class="ttobot-avatar"><img src="https://media.discordapp.net/attachments/746056017997201552/1558734497313198091/d59f3ede542ad4cf.png?ex=6acc8420&is=6acb32a0&hm=95edfe30b2c044b09528514ff936b9f956d5047fc59c519b619ae0f147d97bb3&=&format=webp&quality=lossless" alt="profile" /></div>
+    <div class="ttobot-name">오로 스칼라토</div>
+  </div>
+  <div class="ttobot-content">
+    <div class="ttobot-content-text">사람이 사람을 도와주는데 무슨 상관이겠어요. (빤히 쳐다보더니 손 슬쩍 내민다.) 그래도 돈을 주시면 제가 대신 해드릴 수 있겠는데⋯⋯.</div>
+    
+  </div>
+  <div class="ttobot-time">2026년 9월 24일 오전 01:04</div>
+  </div>
+
+<div class="ttobot-status" data-account="@Elio">
+  <div class="ttobot-avatar-wrapper">
+    <div class="ttobot-avatar"><img src="https://media.discordapp.net/attachments/746056017997201552/1558736099571007548/2.png?ex=6acc859e&is=6acb341e&hm=f7bbf678431ce599513aae2614088910140337df03bc3d25e1bfcbbebaf97e77&=&format=webp&quality=lossless" alt="profile" /></div>
+    <div class="ttobot-name">엘리오 리날디</div>
+  </div>
+  <div class="ttobot-content">
+    <div class="ttobot-content-text">역시 시간을 돈으로 교환하는 데 전문가시네요. 하지만, 이 정도 일에 사람을 고용할 정도는 아니라서 말입니다. (그리 말하면서도 종이 뭉치의 절반 정도를 당신 쪽으로 내밀었다.) 그래도 도와주신다면, 끝나고 술 한잔 정도는 사드릴 수 있는데……. 이 정도 보수로 당신의 시간을 사기엔 부족할까요?</div>
+    
+  </div>
+  <div class="ttobot-time">2026년 9월 24일 오전 10:07</div>
+  </div>
+
+<div class="ttobot-status" data-account="@oro">
+  <div class="ttobot-avatar-wrapper">
+    <div class="ttobot-avatar"><img src="https://media.discordapp.net/attachments/746056017997201552/1558734497313198091/d59f3ede542ad4cf.png?ex=6acc8420&is=6acb32a0&hm=95edfe30b2c044b09528514ff936b9f956d5047fc59c519b619ae0f147d97bb3&=&format=webp&quality=lossless" alt="profile" /></div>
+    <div class="ttobot-name">오로 스칼라토</div>
+  </div>
+  <div class="ttobot-content">
+    <div class="ttobot-content-text">흐음. (고민하는 척 하다가도 거절할 마음은 없는지, 내밀어진 종이 뭉치 조심스레 받는다. 술이 맛있나?) 비싼 술이라면 제 시간이 안 아깝죠. 술을 병째로 퍼마실 정도로 좋아하는 것은 아니지만… 원래 비싼 건 거절하는게 예의에 어긋난다고 하지 않습니까? 술이 들어갈 때는 이런 저런 이야기도 할 수도 있고… 그러다 점괘를 부탁드릴 수 있는 거고… (생색이란 생색 다 내면서 결국 공짜 점술 보려는 속셈.)</div>
+    
+  </div>
+  <div class="ttobot-time">2026년 9월 24일 오후 12:45</div>
+  </div>
+
+<div class="ttobot-status" data-account="@Elio">
+  <div class="ttobot-avatar-wrapper">
+    <div class="ttobot-avatar"><img src="https://media.discordapp.net/attachments/746056017997201552/1558736099571007548/2.png?ex=6acc859e&is=6acb341e&hm=f7bbf678431ce599513aae2614088910140337df03bc3d25e1bfcbbebaf97e77&=&format=webp&quality=lossless" alt="profile" /></div>
+    <div class="ttobot-name">엘리오 리날디</div>
+  </div>
+  <div class="ttobot-content">
+    <div class="ttobot-content-text">비싼 술에 이야기까지는 그렇다 쳐도…… 어느새 점괘까지 보수에 포함되어 있군요. (한 방 먹었다는 듯 웃었다.) 역시 계산이 빠르십니다. 제가 술을 사면서 점까지 봐드리면, 이 거래에서 손해 보는 쪽은 아무래도 저 같은데요. (그러면서도 종이를 도로 빼앗을 생각은 없는 듯 남은 절반을 챙겨 들더니, 목적지인 제의소 쪽으로 느리게 발걸음을 옮긴다.) 뭐, 좋습니다. 대신 비싼 술을 원하셨으니, 점괘가 마음에 들지 않아도 환불은 없는 것으로 하죠. 어떻습니까? 이 정도면 제가 많이 내어드린 겁니다.</div>
+    
+  </div>
+  <div class="ttobot-time">2026년 9월 25일 오후 02:18</div>
+  </div>
+
+<div class="ttobot-status" data-account="@oro">
+  <div class="ttobot-avatar-wrapper">
+    <div class="ttobot-avatar"><img src="https://media.discordapp.net/attachments/746056017997201552/1558734497313198091/d59f3ede542ad4cf.png?ex=6acc8420&is=6acb32a0&hm=95edfe30b2c044b09528514ff936b9f956d5047fc59c519b619ae0f147d97bb3&=&format=webp&quality=lossless" alt="profile" /></div>
+    <div class="ttobot-name">오로 스칼라토</div>
+  </div>
+  <div class="ttobot-content">
+    <div class="ttobot-content-text">제가 원래 이득 볼 수 있는 건 알차게 받아먹는 편이라서 말입니다. 오늘은 저 대신 운이 안 좋았다 생각하시는게 좋을 거예요. (기분이 확 좋아진 것처럼 환해진 얼굴. 몇 분 지날 즈음부터는 제멋대로 앞서 걷는다.) 그리고 말씀하신대로 환불의 환도 꺼내지 않을테니 안심하십쇼. 저는 거짓말을 절~대 하지 않으니 믿으셔도 된답니다. 자, 빨리 끝내고 얼른 공짜 술을…</div>
+    
+  </div>
+  <div class="ttobot-time">2026년 9월 25일 오후 08:34</div>
+  </div>
+
+<div class="ttobot-status" data-account="@Elio">
+  <div class="ttobot-avatar-wrapper">
+    <div class="ttobot-avatar"><img src="https://media.discordapp.net/attachments/746056017997201552/1558736099571007548/2.png?ex=6acc859e&is=6acb341e&hm=f7bbf678431ce599513aae2614088910140337df03bc3d25e1bfcbbebaf97e77&=&format=webp&quality=lossless" alt="profile" /></div>
+    <div class="ttobot-name">엘리오 리날디</div>
+  </div>
+  <div class="ttobot-content">
+    <div class="ttobot-content-text">거짓말을 절대 하지 않는다는 말은……. 거짓말쟁이들이 가장 좋아하는 문장 아닙니까? (의심스러운 눈초리로 당신을 바라보다 슬쩍 웃었다.) 뭐, 좋습니다. 일단 믿어드리죠. (제의소까지는 멀지 않았기에, 금방 도착할 수 있었다. 그는 탁자에 제 몫의 종이 뭉치를 올려놓고는, 당신에게도 여기 두라는 듯 손짓했다.) 이것으로 임무 완료로군요. 그럼, 약속한 술인가요? 와인과 맥주. 어느 쪽이 더 좋으십니까?</div>
+    
+  </div>
+  <div class="ttobot-time">2026년 9월 26일 오전 01:24</div>
+  </div>
+
+<div class="ttobot-status" data-account="@oro">
+  <div class="ttobot-avatar-wrapper">
+    <div class="ttobot-avatar"><img src="https://media.discordapp.net/attachments/746056017997201552/1558734497313198091/d59f3ede542ad4cf.png?ex=6acc8420&is=6acb32a0&hm=95edfe30b2c044b09528514ff936b9f956d5047fc59c519b619ae0f147d97bb3&=&format=webp&quality=lossless" alt="profile" /></div>
+    <div class="ttobot-name">오로 스칼라토</div>
+  </div>
+  <div class="ttobot-content">
+    <div class="ttobot-content-text">(당신 따라 자신 몫의 종이 뭉치를 올려놓는다. 그 후에는 스트레칭처럼 주먹 쥐었다가 푸는 것 반복.) 맥주보다는 역시 와인이죠. 와인이 더 비싸고 달다 들었거든요. 음, 아니어도 상관은 없지만. (느긋한 발걸음으로 다시금 나가려다가,) … 혹시 알고 계시는 주점이 있으신지? 생각해보니 저는 주점에 가본 기억이 별로 없어서, 맛있는 곳이 어디인지 잘…</div>
+    
+  </div>
+  <div class="ttobot-time">2026년 9월 26일 오후 03:11</div>
+  </div>
+
+<div class="ttobot-status" data-account="@Elio">
+  <div class="ttobot-avatar-wrapper">
+    <div class="ttobot-avatar"><img src="https://media.discordapp.net/attachments/746056017997201552/1558736099571007548/2.png?ex=6acc859e&is=6acb341e&hm=f7bbf678431ce599513aae2614088910140337df03bc3d25e1bfcbbebaf97e77&=&format=webp&quality=lossless" alt="profile" /></div>
+    <div class="ttobot-name">엘리오 리날디</div>
+  </div>
+  <div class="ttobot-content">
+    <div class="ttobot-content-text">와인이 더 비쌀지는 몰라도, 더 달다는 건 장담하기 어렵습니다. 잘못 고르면 맥주보다 훨씬 떫은 걸 마시게 될 수도 있으니까요. (따라 나서며 가볍게 웃었다.) 그런데 주점에 가본 기억이 별로 없다니, 의외군요. 그렇다면 제가 아는 곳으로 가시죠. 기왕 제가 사기로 한 술인데, 맛없는 걸 대접했다간 체면이 서지 않으니까요. (그의 발걸음은 단골 주점 쪽으로 향했다.) 단 걸 좋아하신다면 그쪽으로 골라드리겠습니다. 다만 비싼 와인을 고른 이유가 정말 단 맛 때문인지는…… 굳이 묻지 않도록 하죠. (놀리듯 웃었다.) 생각보다 어린아이 입맛인가 봅니다?</div>
+    
+  </div>
+  <div class="ttobot-time">2026년 9월 27일 오전 02:06</div>
+  </div>
+  <script src="../search.js"></script>
+  <script src="../manifest.js"></script>
+  <script src="../theme.js"></script>
+</body>
+</html>
