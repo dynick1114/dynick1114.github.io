@@ -17,8 +17,8 @@ fs.mkdirSync(LOGS_DIR, { recursive: true });
 // 색상 코드는 홈페이지 내부에서 직접 수정이 가능하니 반드시 여기서 설정할 필요는 없습니다.
 // 아래 CHARACTERS를 하나라도 수정했을 경우에는, node apply_theme.js 를 실행합니다.
 const CHARACTERS = {
-  Ettore: { label: "엘리오 리날디", account: "@Elio", side: "left", colorLight: "#ad3a90", colorDark: "#e182ed" },
-  Flutto: { label: "오로 스칼라토", account: "@oro", side: "right", colorLight: "#4a578c", colorDark: "#999de7" },
+  Elio: { label: "엘리오 리날디", account: "@Elio", side: "left", colorLight: "#ad3a90", colorDark: "#e182ed" },
+  Manana: { label: "마냐나", account: "@Stultifera", side: "right", colorLight: "#982626", colorDark: "#ffaaaa" },
 };
 
 {
