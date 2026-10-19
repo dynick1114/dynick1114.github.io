@@ -31,7 +31,7 @@
         for (var key in custom) {
           if (!/^#[0-9a-f]{6}$/i.test(custom[key])) continue;
           root.style.setProperty("--accent-" + key, custom[key]);
-          if (key === "Elio" || key === "Manana") {
+          if (key === "Ettore" || key === "Flutto") {
             root.style.setProperty("--on-" + key, readable(custom[key]));
           }
         }
@@ -40,7 +40,7 @@
       try {
         var saved = JSON.parse(localStorage.getItem("enty-avatars") || "{}");
         var rules = "";
-        var accounts = {"Elio":"@Elio","Manana":"@Stultifera"};
+        var accounts = {"Ettore":"@Elio","Flutto":"@oro"};
         for (var name in accounts) {
           var gen = root.getAttribute("data-gen-" + name);
           var url = gen && saved[name + ":" + gen];
@@ -69,11 +69,11 @@
 <body class="reader-page">
   <div class="reader" id="reader" data-open="false">
 
-    <aside class="reader-side" data-character="Elio" data-side="left">
-      <button type="button" class="reader-portrait" data-portrait="Elio"
+    <aside class="reader-side" data-character="Ettore" data-side="left">
+      <button type="button" class="reader-portrait" data-portrait="Ettore"
               aria-label="엘리오 리날디 이미지 바꾸기"></button>
-      <div class="reader-name"><b data-name="Elio">엘리오 리날디</b></div>
-      <div class="reader-scroll" data-list="Elio"></div>
+      <div class="reader-name"><b data-name="Ettore">엘리오 리날디</b></div>
+      <div class="reader-scroll" data-list="Ettore"></div>
     </aside>
 
     <main class="reader-center">
@@ -97,11 +97,11 @@
       </div>
     </main>
 
-    <aside class="reader-side" data-character="Manana" data-side="right">
-      <button type="button" class="reader-portrait" data-portrait="Manana"
-              aria-label="마냐나 이미지 바꾸기"></button>
-      <div class="reader-name"><b data-name="Manana">마냐나</b></div>
-      <div class="reader-scroll" data-list="Manana"></div>
+    <aside class="reader-side" data-character="Flutto" data-side="right">
+      <button type="button" class="reader-portrait" data-portrait="Flutto"
+              aria-label="오로 스칼라토 이미지 바꾸기"></button>
+      <div class="reader-name"><b data-name="Flutto">오로 스칼라토</b></div>
+      <div class="reader-scroll" data-list="Flutto"></div>
     </aside>
 
   </div>

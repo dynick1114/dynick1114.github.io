@@ -12,12 +12,12 @@
   --text: #1b2733;
   --text-muted: #5d6a78;
   --shadow: 0 1px 3px rgba(27, 39, 51, 0.07);
-  --accent-Elio: #ad3a90;
-  --accent-Manana: #982626;
+  --accent-Ettore: #ad3a90;
+  --accent-Flutto: #4a578c;
   --accent-point: #4c5fd7;
   --on-point: #ffffff;
-  --on-Elio: #ffffff;
-  --on-Manana: #ffffff;
+  --on-Ettore: #ffffff;
+  --on-Flutto: #ffffff;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -29,12 +29,12 @@
     --text: #e3eaf3;
     --text-muted: #93a1b3;
     --shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
-    --accent-Elio: #e182ed;
-    --accent-Manana: #ffaaaa;
+    --accent-Ettore: #e182ed;
+    --accent-Flutto: #999de7;
     --accent-point: #8b9bfa;
     --on-point: #0d141d;
-    --on-Elio: #0d141d;
-    --on-Manana: #0d141d;
+    --on-Ettore: #0d141d;
+    --on-Flutto: #0d141d;
   }
 }
 
@@ -46,12 +46,12 @@
   --text: #1b2733;
   --text-muted: #5d6a78;
   --shadow: 0 1px 3px rgba(27, 39, 51, 0.07);
-  --accent-Elio: #ad3a90;
-  --accent-Manana: #982626;
+  --accent-Ettore: #ad3a90;
+  --accent-Flutto: #4a578c;
   --accent-point: #4c5fd7;
   --on-point: #ffffff;
-  --on-Elio: #ffffff;
-  --on-Manana: #ffffff;
+  --on-Ettore: #ffffff;
+  --on-Flutto: #ffffff;
 }
 
 :root[data-theme="dark"] {
@@ -62,12 +62,12 @@
   --text: #e3eaf3;
   --text-muted: #93a1b3;
   --shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
-  --accent-Elio: #e182ed;
-  --accent-Manana: #ffaaaa;
+  --accent-Ettore: #e182ed;
+  --accent-Flutto: #999de7;
   --accent-point: #8b9bfa;
   --on-point: #0d141d;
-  --on-Elio: #0d141d;
-  --on-Manana: #0d141d;
+  --on-Ettore: #0d141d;
+  --on-Flutto: #0d141d;
 }
 
 :root {
@@ -127,12 +127,12 @@ body {
   background: var(--bg-card-alt);
 }
 
-.ttobot-status[data-account="@Stultifera"] {
-  border-left-color: var(--accent-Manana);
+.ttobot-status[data-account="@oro"] {
+  border-left-color: var(--accent-Flutto);
 }
 
 .ttobot-status[data-account="@Elio"] {
-  border-left-color: var(--accent-Elio);
+  border-left-color: var(--accent-Ettore);
 }
 
 /* avatar column */
@@ -172,12 +172,12 @@ body {
   color: var(--text-muted);
 }
 
-.ttobot-status[data-account="@Stultifera"] .ttobot-name {
-  color: var(--accent-Manana);
+.ttobot-status[data-account="@oro"] .ttobot-name {
+  color: var(--accent-Flutto);
 }
 
 .ttobot-status[data-account="@Elio"] .ttobot-name {
-  color: var(--accent-Elio);
+  color: var(--accent-Ettore);
 }
 
 /* content */
@@ -271,12 +271,12 @@ body.reader-page {
   padding: 0.9rem 0.75rem 0;
 }
 
-.reader-side[data-character="Elio"] {
-  --character: var(--accent-Elio);
+.reader-side[data-character="Ettore"] {
+  --character: var(--accent-Ettore);
 }
 
-.reader-side[data-character="Manana"] {
-  --character: var(--accent-Manana);
+.reader-side[data-character="Flutto"] {
+  --character: var(--accent-Flutto);
 }
 
 .reader-portrait {
@@ -723,14 +723,14 @@ html.in-pane body .ttobot-status:nth-child(even) {
 
 html.in-pane body .ttobot-status[data-account="@Elio"] {
   flex-direction: row;
-  --bubble: var(--accent-Elio);
-  --bubble-text: var(--on-Elio);
+  --bubble: var(--accent-Ettore);
+  --bubble-text: var(--on-Ettore);
 }
 
-html.in-pane body .ttobot-status[data-account="@Stultifera"] {
+html.in-pane body .ttobot-status[data-account="@oro"] {
   flex-direction: row-reverse;
-  --bubble: var(--accent-Manana);
-  --bubble-text: var(--on-Manana);
+  --bubble: var(--accent-Flutto);
+  --bubble-text: var(--on-Flutto);
 }
 
 html.in-pane body .ttobot-avatar-wrapper {
@@ -776,7 +776,7 @@ html.in-pane body .ttobot-status[data-account="@Elio"] .ttobot-content::before {
   border-left-width: 4px;
 }
 
-html.in-pane body .ttobot-status[data-account="@Stultifera"] .ttobot-content::before {
+html.in-pane body .ttobot-status[data-account="@oro"] .ttobot-content::before {
   right: -10px;
   border-left-color: var(--bubble);
   border-right-width: 4px;
@@ -814,7 +814,7 @@ html.in-pane body .ttobot-status[data-account="@Elio"] .ttobot-time {
   text-align: left;
 }
 
-html.in-pane body .ttobot-status[data-account="@Stultifera"] .ttobot-time {
+html.in-pane body .ttobot-status[data-account="@oro"] .ttobot-time {
   text-align: right;
 }
 
